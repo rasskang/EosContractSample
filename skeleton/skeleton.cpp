@@ -21,26 +21,26 @@ namespace skeleton{
  */
 extern "C" {
 
-    /**
-     *  This method is called once when the contract is published or updated.
-     */
-    void init()  {
-       eosio::print( "Init car rent contract\n" );
-    }
+	/**
+	 *  This method is called once when the contract is published or updated.
+	 */
+	void init()  {
+		eosio::print( "Init car rent contract\n" );
+	}
 
-		/// The apply method implements the dispatch of events to this contract
-		void apply( uint64_t code, uint64_t action ) {
-			eosio::print( "Receive message: ", eosio::name(code), "->", eosio::name(action), "\n" );
+	/// The apply method implements the dispatch of events to this contract
+	void apply( uint64_t code, uint64_t action ) {
+		eosio::print( "Receive message: ", eosio::name(code), "->", eosio::name(action), "\n" );
 
-			if(code==N(test)){
-				if(action==N(registercar)){
-					auto acm = eosio::current_message<skeleton::registercar>();
-					eosio::print("\nAdd car message\n");
-					eosio::dump(acm, 4);
+		if(code==N(test)){
+			if(action==N(registercar)){
+				auto acm = eosio::current_message<skeleton::registercar>();
+				eosio::print("\nAdd car message\n");
+				eosio::dump(acm, 4);
 
-					skeleton::apply_registercar( eosio::current_message<skeleton::registercar>() );
-				}
+				skeleton::apply_registercar( eosio::current_message<skeleton::registercar>() );
 			}
 		}
+	}
 
 } // extern "C"
