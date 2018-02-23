@@ -1,21 +1,21 @@
 {
-  "types": [],
-  "structs": [{
-      "name": "registercar",
-      "base": "",
-      "fields": {
-        "serial": "string",
-        "brand": "string",
-        "color": "string",
-        "body_type": "uint8",
-        "registdate": "time"
-      }
-    }
-  ],
-  "actions": [{
-      "action_name": "registercar",
-      "type": "registercar"
-    }
-  ],
-  "tables": []
+	"types": [],
+	"structs": [{
+		"name" : "registercar",
+		"base" : "",
+		"fields" : {
+			"serial" : "string",
+			"body_type" : "uint8",
+			"brand" : "string",
+			"color" : "string",
+			"registdate" : "time"
+		}
+	}
+	],
+	"actions": [{
+		"action_name" : "registercar", "type" : "registercar"
+	}
+	],
+	"tables": []
 }
+
