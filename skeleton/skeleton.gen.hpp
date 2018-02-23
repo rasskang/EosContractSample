@@ -8,20 +8,23 @@
 //using namespace skeleton;
 
 namespace eosio { namespace raw {
-	template<typename Stream> inline void pack( Stream& s, const skeleton::registercar& value ) {
-		raw::pack(s, value.serial);
-		raw::pack(s, value.brand);
-		raw::pack(s, value.color);
+	template<typename Stream> inline void pack( Stream& s, const skeleton::userinfo& value ) {
+		raw::pack(s, value.email);
+		raw::pack(s, value.homepage);
+		raw::pack(s, value.country);
+		raw::pack(s, value.birthyear);
+		raw::pack(s, value.gender);
 		raw::pack(s, value.registdate);
 	}
-	template<typename Stream> inline void unpack( Stream& s, skeleton::registercar& value ) {
-		raw::unpack(s, value.serial);
-		raw::unpack(s, value.brand);
-		raw::unpack(s, value.color);
-		raw::unpack(s, value.body_type);
+	template<typename Stream> inline void unpack( Stream& s, skeleton::userinfo& value ) {
+		raw::unpack(s, value.email);
+		raw::unpack(s, value.homepage);
+		raw::unpack(s, value.country);
+		raw::unpack(s, value.birthyear);
+		raw::unpack(s, value.gender);
 		raw::unpack(s, value.registdate);
 	}
-} }
+} } ///eosio::raw
 
 #include <eoslib/raw.hpp>
 namespace eosio {
@@ -39,17 +42,18 @@ namespace eosio {
 			return value;
 		}
 
-	void dump(const skeleton::registercar& value, int tab=0) {
-		print_ident(tab);print("serial:[");prints_l(value.serial.get_data(), value.serial.get_size());print("]\n");
-		print_ident(tab);print("brand:[");prints_l(value.brand.get_data(), value.brand.get_size());print("]\n");
-		print_ident(tab);print("color:[");prints_l(value.color.get_data(), value.color.get_size());print("]\n");
-		print_ident(tab);print("body_type:[");printi(uint8_t(value.body_type));print("]\n");
+	void dump(const skeleton::userinfo& value, int tab=0) {
+		print_ident(tab);print("email:[");prints_l(value.email.get_data(), value.email.get_size());print("]\n");
+		print_ident(tab);print("homepage:[");prints_l(value.homepage.get_data(), value.homepage.get_size());print("]\n");
+		print_ident(tab);print("country:[");prints_l(value.country.get_data(), value.country.get_size());print("]\n");
+		print_ident(tab);print("birthyear:[");printi(uint16_t(value.birthyear));print("]\n");
+		print_ident(tab);print("gender:[");printi(uint8_t(value.gender));print("]\n");
 		print_ident(tab);print("registdate:[");printi(uint32_t(value.registdate));print("]\n");
 	}
 
 	template<>
-		skeleton::registercar current_message<skeleton::registercar>() {
-			return current_message_ex<skeleton::registercar>();
+		skeleton::userinfo current_message<skeleton::userinfo>() {
+			return current_message_ex<skeleton::userinfo>();
 		}
 
 } ///eosio

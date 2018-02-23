@@ -1,19 +1,20 @@
 {
 	"types": [],
 	"structs": [{
-		"name": "registercar",
+		"name": "userinfo",
 		"base": "",
 		"fields": {
-			"serial": "string",
-			"brand": "string",
-			"color": "string",
-			"body_type": "uint8",
+			"email": "string",
+			"homepage": "string",
+			"country": "string",
+			"birthyear": "uint16",
+			"gender": "uint8",
 			"registdate": "time"
 		}
 	}
 	],
 	"actions": [{
-		"action_name": "registercar", "type": "registercar" }
+		"action_name": "regist", "type": "userinfo" }
 	],
 	"tables": []
 }

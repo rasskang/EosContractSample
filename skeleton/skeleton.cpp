@@ -7,10 +7,10 @@
 #include "skeleton.hpp"
 #include "skeleton.gen.hpp"
 
-namespace skeleton{
+namespace skeleton {
 
-	void apply_registercar( const registercar& car ) {
-		eosio::print( "\n\n", car.brand, "\n\n" );
+	void apply_regist( const userinfo& user ) {
+		eosio::print( "userinfo.email=>[", user.email, "]\n\n" );
 	}
 
 }
@@ -25,7 +25,7 @@ extern "C" {
 	 *  This method is called once when the contract is published or updated.
 	 */
 	void init()  {
-		eosio::print( "Init car rent contract\n" );
+		eosio::print( "Init skeleton contract\n" );
 	}
 
 	/// The apply method implements the dispatch of events to this contract
@@ -33,12 +33,17 @@ extern "C" {
 		eosio::print( "Receive message: ", eosio::name(code), "->", eosio::name(action), "\n" );
 
 		if(code==N(test)){
-			if(action==N(registercar)){
-				auto acm = eosio::current_message<skeleton::registercar>();
-				eosio::print("\nAdd car message\n");
+			if(action==N(regist)){
+				auto acm = eosio::current_message<skeleton::userinfo>();
+				eosio::print("\nRegist skeleton message\n");
 				eosio::dump(acm, 4);
 
-				skeleton::apply_registercar( eosio::current_message<skeleton::registercar>() );
+				/*
+				eosc -v push message test regist \
+				'{"email" : "rasskang", "homepage" : "http://rasskang.tistory.com", "country" : "Korea", "birthyear" : 1978, "gender" : 1, "registdate" : "2018-02-23T15:21:59" }' \
+				-S test
+				*/
+				skeleton::apply_regist( eosio::current_message<skeleton::userinfo>() );
 			}
 		}
 	}

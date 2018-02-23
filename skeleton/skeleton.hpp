@@ -6,11 +6,12 @@
 
 namespace skeleton {
 
-	struct PACKED(registercar) {
-		eosio::string serial;
-		eosio::string brand;
-		eosio::string color;
-		uint8_t body_type;
+	struct PACKED(userinfo) {
+		eosio::string email;
+		eosio::string homepage;
+		eosio::string country;
+		uint16_t birthyear;
+		uint8_t gender;
 		time registdate;
 	};
 
